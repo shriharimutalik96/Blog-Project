@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+         <form method="POST" action="">
+                    {{form.hidden_tag()}}      {#  <hidden_tag just adds a csrf token or cross forgery attaack token> #}
+                    <fieldset class="form">
+                            <legend class="border-bottom mb-4">
+                                    Update Post
+                            </legend>
+                            <div class="form-group">
+                                    {{ form.title.label(class="form-control-label")}}
+
+                                    {% if form.title.errors %}
+                                        {{ form.title(class="form-control form-control-lg is-invalid")}}
+                                                <div class="invlid-feedback">
+                                                    {% for error in form.title.errors %}
+                                                            <span> {{error}} </span>
+                                                    {% endfor %}
+                                    {% else %}
+
+                                                {{ form.title(class="form-control form-control-lg")}}
+
+                                    {% endif %}
+
+                            </di>
+                            <div class="form-group">
+                                    {{ form.content.label(class="form-control-label")}}
+
+                                    {% if form.content.errors %}
+                                        {{ form.content(class="form-control form-control-lg is-invalid")}}
+                                                <div class="invlid-feedback">
+                                                    {% for error in form.content.errors %}
+
+                                                           <span> {{error}} </span>
+
+                                                    {% endfor %}
+
+                                    {% else %}
+
+                                                {{ form.content(class="form-control form-control-lg")}}
+
+                                    {% endif %}
+                            </div>
+
+                    </fieldset>
+
+                    <fieldset class="form-group">
+
+                        {{form.submit(class="btn btn-outline-success")}}
+
+                    </fieldset>
+            </form>
+
+    </div>
+
+
+{% endblock content %}
